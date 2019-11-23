@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Introducción al Sistema Automatizado para el Análisis Geocientífico</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="   Antony Barja Geographer Freelance  barja8.github.io" />
+    <meta name="date" content="2019-11-23" />
+    <link rel="stylesheet" href="kakashi.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introducción al Sistema Automatizado para el Análisis Geocientífico
+## <img src='img/logo_curso.png' width=170 height=90 ALIGN=left>
+### <br><br><br>Antony Barja<br>Geographer Freelance<br/><a href="https://barja8.github.io/" > barja8.github.io</a>
+### 2019-11-23
+
+---
+
+
+# ¿Qué es SAGA?
+
+.pull-left[
+Es un GIS **de código abierto** que fue desarrollado en el **lenguaje de C++** por del Departamento de Geografía Física de Göttingen y de Hamburgo en **Alemania** en los años 2001,a partir del año **2004** el código fuente fue mostrado al público y la comunidad científica bajo la licencia Open Source Software (OSS).
+
+&lt;img src="img/saga-gis.png" width="430" height="200" style="display: block; margin: auto auto auto 0;" /&gt;
+
+]
+
+.pull-right[
+SAGA inicialmente fue enfocado para el **análisis digital del terreno**,años posteriores esto ha ido evoluciando y hoy en día tiene diversos **modulos** para temas específicos como la:
+  1. Geoestadística
+  2. Teledetección
+  4. Caracterización hidrográfica
+  5. Climatología, entre otros.
+]
+
+---
+.pull-left[
+# Ventajas
+1. Facilidad en el empleo de visualización de 3D 
+2. Alto contenido en herramientas para la estadística espacial 
+3. Algoritmos sofisticados para la clasificación supervizada y no supervizada en RS
+4. Algoritmos automatizados para el análisis morfométrico e higrográfico
+
+]
+
+.pull-right[
+# Desventajas
+1. Bajas opciones para el diseño cartográfico
+2. No presenta correciones automáticas en errores topológicos
+3. La edición de datos son limitados
+]
+---
+background-image:url(https://pbs.twimg.com/media/Dd8JsynX4AABaJ0.jpg)
+class:Top, inverse
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt; 
+
+# **PARTE PRÁCTICA**
+---
+# Procedimientos para instalar SAGA 
+## Windows
+Tu puedes instalar cualquier versión de SAGA desde el siguiente enlace [aquí](https://sourceforge.net/projects/saga-gis/files/). 
+
+Ten presente que la **versión** de SAGA **compatible** con el software **QGIS** y **R** es la versión LTR **2.3.x** 
+
+## Linux 
+Si usas Linux va a depender del tipo de distribución que usas,para **ubuntu 19.04**
+tu puedes instalar SAGA de la siguiente manera: 
+En la terminal de comandos emplea el siguiente codigo:
+```sh
+sudo apt-get update
+sudo apt-get install saga
+```
+---
+# Componentes de GUI
+
+&lt;img src="img/GUI.png" width="1707" height="500" style="display: block; margin: auto;" /&gt;
+---
+# Personalizando GUI
+
+&lt;img src="img/image123.png" width="1813" height="500" style="display: block; margin: auto;" /&gt;
+
+---
+# Modulos y librerias de SAGA
+
+
+```r
+library(RSAGA)
+env &lt;- rsaga.env();
+```
+
+```
+## Search for SAGA command line program and modules... 
+## Done
+```
+
+```r
+length(rsaga.get.libraries(env$modules))
+```
+
+```
+## [1] 69
+```
+
+```r
+head(rsaga.get.libraries(env$modules),8)
+```
+
+```
+## [1] "climate_tools"    "contrib_perego"   "db_odbc"          "db_pgsql"        
+## [5] "docs_html"        "docs_pdf"         "garden_3d_viewer" "garden_fractals"
+```
+
+---
+# Fuentes de información de datos espaciales
+
+&lt;img src="img/fuentes.png" width="1707" height="490" style="display: block; margin: auto;" /&gt;
+
+---
+background-image:url(https://raw.githubusercontent.com/barja8/OwnImages/master/saga_img.png)
+class:Top, inverse
+---
+# Geoprocesamiento de datos espaciales
+
+&lt;img src="img/geoprocesamiento.png" width="1707" height="510" style="display: block; margin: auto;" /&gt;
+---
+# Combinación de bandas espectrales
+
+&lt;img src="img/FalsoCOlor.png" width="1813" height="510" style="display: block; margin: auto;" /&gt;
+
+---
+# Mosaico de Imágenes
+
+&lt;img src="img/mosaico.png" width="1813" height="510" style="display: block; margin: auto;" /&gt;
+
+---
+# Visualización en 3D
+
+&lt;img src="img/3D.png" width="1813" height="510" style="display: block; margin: auto;" /&gt;
+
+---
+# Exportación de datos y mapas
+
+&lt;img src="img/visualizacion y mapas.png" width="1707" height="510" style="display: block; margin: auto;" /&gt;
+---
+class:center,inverse
+# GRACIAS!
+&lt;div&gt;
+ &lt;img src="img/icon.png" width="230" height="260" style="float: none;"/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;div&gt;
+&lt;img src="img/git.jpg" width="34" height="34" style="float: none;" /&gt;
+&lt;a href="https://github.com/barja8" &gt;barja8.github&lt;/a&gt;
+ &lt;/div&gt;
+
+&lt;div&gt;
+ &lt;img src="img/gmai.svg" width="35" height="35" style="float: none;" /&gt;
+ &lt;a href=mailto:"antony.barja8@gmail.com"&gt;antony.barja8@gmail.com&lt;/a&gt;
+ &lt;/div&gt;
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan) with [**Kakashi**](https://github.com/malcolmbarrett/kakashi) sytle
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "dracula",
+"highlightLines": true,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

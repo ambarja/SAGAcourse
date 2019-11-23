@@ -12,7 +12,7 @@ El Sistema de Análisis Geocientíficos Automatizados más conocido como SAGA, e
 
 En los ultimos años este software biene implementada como parte de la caja de herramienta de **QGIS** pero solo es compatible con la version 2.1.x , hoy en día ya vamos por la versión 7.3 y en estas nuevas versiones presentan una mayor cantidad de algoritmos en los modulos para diferentes tipos de análisis de datos espaciales, finalmente este mismo podemos integrarlo a R mediante el paquete **RSAGA** creado por Brenning A. et al., lo cual facilita la reproducibilidad del flujograma de trabajo de manera rápida a traves de linea de comandos.
 
-## Obejtivos:
+## Objetivos:
 Dar a conocer a los usuarios y nuevos usuarios la felxibilidad y facilidad de usar herramientas alternativas de codibo abierto para el análsis morfométrico, hidrográfico y empezar por una introducción a la teledetección con SAGA.
 
 ## Finalidad:
