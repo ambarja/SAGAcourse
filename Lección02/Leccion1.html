@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Introducción al Sistema Automatizado para el Análisis Geocientífico</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="   Antony Barja Geographer Freelance  barja8.github.io" />
+    <meta name="date" content="2019-11-30" />
+    <link rel="stylesheet" href="kakashi.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introducción al Sistema Automatizado para el Análisis Geocientífico
+## <img src='img/logo_curso.png' width=170 height=90 ALIGN=left>
+### <br><br><br>Antony Barja<br>Geographer Freelance<br/><a href="https://barja8.github.io/" > barja8.github.io</a>
+### 2019-11-30
+
+---
+
+
+
+background-image:url(https://pbs.twimg.com/media/Dd8JsynX4AABaJ0.jpg)
+class:Top, inverse
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt; 
+# **ALGUNOS ÍNDICES MORFOMÉTRICOS DERIVADOS DE UN DEM**
+---
+# Índice de rugosidad de terreno
+ 
+&lt;img src="img/TRI.png" width="1821" height="500" /&gt;
+---
+# Índice posición topográfica
+ 
+&lt;img src="img/TPI.png" width="1821" height="500" /&gt;
+---
+# Índice de humedad topográfica
+ 
+&lt;img src="img/TWI.png" width="1821" height="400" /&gt;
+
+[**Metodologías**](https://opengeospatialdata.springeropen.com/articles/10.1186/s40965-019-0066-y/figures/4)
+
+---
+background-image:url(https://pbs.twimg.com/media/Dd8JsynX4AABaJ0.jpg)
+class:Top, inverse
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt; 
+
+# **CARACTERIZACIÓN HIDROGRÁFICA**
+---
+
+&lt;img src="img/cuencas.png" width="1821" height="550" style="display: block; margin: auto;" /&gt;
+---
+
+background-image:url(https://pbs.twimg.com/media/Dd8JsynX4AABaJ0.jpg)
+class:Top, inverse
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt; 
+# **TRABAJANDO SAGA + R + QGIS**
+---
+# Modelo RUSLE
+Antecedentes: 
+**USLE** 
+Ha sido desarrollado para la determinación de la erosión laminar del suelo apartir de una gran cantidad de muestras de datos experimentales(R.Yali,2018).
+
+**RUSLE**
+La USDA(Departamento de Agricultura de los Estados Unidos) creo una ecuación universal mejorada del modelo **USLE**.
+
+$$
+A = R.K.Ls.C.P
+$$
+Donde: 
+&lt;br&gt;
+A: Pérdida de por erosión del suelo en una unidad de área (MJ.mm/Ha.año) 
+&lt;br&gt;
+K: Factor de erodabilidad del suelo
+&lt;br&gt;
+Ls: Factor de longitud de pendiente
+&lt;br&gt;
+C: Cobertura vegetal 
+&lt;br&gt;
+P: Factor de buenas prácticas de convervación de suelo
+---
+# Factor R
+Expresa la cantida de lluvia necesaria para erosinar el suelo
+
+$$
+factorR = 1.735x \textit{10}^{1.5log10( \frac{Pmensual^2}{Ptotal})-0.08188}\
+$$
+
+---
+
+---
+class:center,inverse
+# GRACIAS!
+&lt;div&gt;
+ &lt;img src="img/icon.png" width="230" height="260" style="float: none;"/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;div&gt;
+&lt;img src="img/git.jpg" width="34" height="34" style="float: none;" /&gt;
+&lt;a href="https://github.com/barja8" &gt;barja8.github&lt;/a&gt;
+ &lt;/div&gt;
+
+&lt;div&gt;
+ &lt;img src="img/gmai.svg" width="35" height="35" style="float: none;" /&gt;
+ &lt;a href=mailto:"antony.barja8@gmail.com"&gt;antony.barja8@gmail.com&lt;/a&gt;
+ &lt;/div&gt;
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan) with [**Kakashi**](https://github.com/malcolmbarrett/kakashi) sytle
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "dracula",
+"highlightLines": true,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
