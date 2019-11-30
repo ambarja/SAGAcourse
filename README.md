@@ -19,11 +19,4 @@ Dar a conocer a los usuarios y nuevos usuarios la felxibilidad y facilidad de us
 Obtener los mismos resultados que un software privativo
 
 ## Temario:
- > * Sesion01: Introducción a SAGA y geoprocesamiento con datos espaciales
- > * Sesion02: Análisis morfométrico 
- > * Sesion03: Caractetización de cuencas hidrográficas
- > * Sesion04: Introducción a la teledetección y a la clasificación supervizada y no supervizada
- > * Sesion05: Integración de R con SAGA 
- > * Evaluación
-
-## Referencias:
+ > * [Sesion01](https://barja8.github.io/SAGAcourse/Lecci%C3%B3n01/Leccion1.html#1): Introducción a SAGA y geoprocesamiento con datos espaciales.
