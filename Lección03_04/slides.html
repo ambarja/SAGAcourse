@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Introducción al Sistema de Información Geográfica con SAGAGIS - SesiónIV</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Antony Barja Geographer Freelance  barja8.github.io" />
+    <meta name="date" content="2019-12-14" />
+    <link rel="stylesheet" href="style/my-theme.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introducción al Sistema de Información Geográfica con SAGAGIS - SesiónIV
+## <img src='style/img/icon.png' width=270 height=140 ALIGN=center>
+### Antony Barja<br>Geographer Freelance<br/><a href="https://barja8.github.io/" > barja8.github.io</a>
+### 2019-12-14
+
+---
+
+
+&lt;!-- 14:15 - 15:00 - 45 minute talk  --&gt;
+&lt;!-- Aims: show-off the book, provide overview, some useful things in it --&gt;
+
+layout: true
+background-image: url(style/img/r_geocomp_background.png)
+background-size: cover
+
+---
+# Implementación del modelo RUSLE
+Antecedentes: 
+&lt;br&gt;
+**USLE** ha sido desarrollado para determinar la **erosión laminar** del suelo apartir de una gran cantidad de muestras de datos experimentales para una área de hasta de 1 ha [(R.Yali,2018)](http://cybertesis.unmsm.edu.pe/handle/cybertesis/137/browse?type=author&amp;value=Yali+Samaniego%2C+Roy+Marco).
+
+Años posteriores el Departamento de Agricultura de los Estados Unidos (USDA) decide crear una ecuación universal mejorada del modelo a lo que lo llamaron **RUSLE**.
+
+La ecuación de **RUSLE** se expresa de la siguiente manera:
+
+$$
+A = R.K.Ls.C.P
+$$
+Donde: 
+&lt;br&gt;
+A: Pérdida de suelo promedio por erosión en una unidad de área (MJ.mm/Ha.año) 
+&lt;br&gt;
+K: Factor de erodabilidad del suelo
+&lt;br&gt;
+Ls: Factor de longitud de pendiente
+&lt;br&gt;
+C: Cobertura vegetal 
+&lt;br&gt;
+P: Factor de buenas prácticas de convervación de suelo
+---
+# Cálculo de los diferentes parámetros
+## Factor Erosividad (R)
+Para nuestra aplicación se considero la fórmula desarrollada por (Wischmeier &amp; Smith, 1978)
+&lt;img src="style/img/img01.png" width="1813" height="360" /&gt;
+---
+## Factor de erodabilidad del suelo (K)
+Nos ayuda a entender que tan suceptible es el suelo a la erosión hídrica, para nuestra aplicación se considero la ecuación de Zhu et. al. (2014)
+
+&lt;img src="style/img/img02.png" width="1813" height="360" /&gt;
+---
+# Factor relieve (Ls)
+Expresa los efectos de la topografía local sobre la tasa de erosión del suelo,combinando los efectos de la longitud de la pendiente (L) y la inclinación de la pendiente (S) [(R.Yali,2018)](http://cybertesis.unmsm.edu.pe/handle/cybertesis/137/browse?type=author&amp;value=Yali+Samaniego%2C+Roy+Marco).
+
+&lt;img src="style/img/img03.png" width="1813" height="360" /&gt;
+---
+## Factor de cobertura vegetal (C)
+Covertura vegetal, para nuestro caso se obtuvo mendiante una clasificación no supervizada en donde luego se procedio a identificar los cluster para luego darle los valores respectivos según el cuadro de valores mostrado por **Sabino (2016)**.
+
+&lt;img src="style/img/img04.png" width="1813" height="360" /&gt;
+
+---
+## RUSLE
+La ecuación RUSLE emplea un factor P de 1,cuando se desea reflejando el deseo de predecir la erosión potencial bajo las condiciones actuales de ninguna práctica de conservación de suelos. 
+
+&lt;img src="style/img/img05.png" width="1707" height="360" /&gt;
+---
+class:center,inverse,middle
+# Aplicaciones de teledetección con SAGAGIS 
+---
+# Clasificacion no supervizadas y supervizada
+SAGA presenta algunos módulos para teledetección; sin embargo estós son muy lìmitados a comparación con otros softwares como **SNAP**, **OTB**, **QGIS**, entre otros.Para la presente sesión vamos a emplear los algoritmos de **K-means** y **SVM**.
+
+&lt;img src="style/img/img07.png" width="1804" height="300" /&gt;
+
+---
+# Clasificación no supervizada
+
+&lt;img src="style/img/img10.png" width="1813" height="400" /&gt;
+
+---
+# Clasificación supervizada
+
+&lt;img src="style/img/img11.png" width="1813" height="400" /&gt;
+
+---
+# OBIA para el mapeo de flujos de dentritos
+Object Based Image Analysis (OBIA) es una técnica de clasificación de imágenes basadas en fragmentaciones de regiones espectrales homegeneas.
+
+&lt;img src="style/img/img08.png" width="1813" height="340" /&gt;
+---
+# Estimación del riesgo por flujo de dentritos integrando SAGA + QGIS 
+
+&lt;img src="style/img/img09.png" width="1813" height="350" /&gt;
+
+---
+class:center,inverse,middle
+# Integrando R con SAGA 
+
+---
+# Procedimientos para la instalación de RSAGA
+
+Primero tener instalado una version más estable de SAGA compatible con R (SAGA LTS 2.3.1)
+
+
+```r
+# Instalación del paquete RSAGA
+# install.packages('RSAGA', dep = TRUE)
+library(RSAGA)
+
+# Verificación de la conexión de R con SAGA
+env &lt;- rsaga.env()
+print(env)
+
+# Paquetes adicionales 
+library(raster)    # Para manejar datos raster
+library(sf)        # Para manejar datos vectoriales
+library(tmap)      # Elaboración de mapas temáticos
+library(cptcity)   # Paleta de colores 
+library(tidyverse) # Ciencia de datos
+```
+
+---
+# Elaboración de mapa de susceptibilidad a deslizamientos usando RSAGA
+
+&lt;img src="style/img/img12.png" width="1813" height="450" /&gt;
+
+---
+class:center,inverse
+# GRACIAS!
+&lt;div&gt;
+ &lt;img src='style/img/avatar.png' width="200" height="230" style="float: none;"/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;div&gt;
+&lt;img src="style/img/git.jpg" width="30" height="30" style="float: none;" /&gt;
+&lt;a href="https://github.com/barja8" &gt;barja8.github&lt;/a&gt;
+ &lt;/div&gt;
+
+&lt;div&gt;
+ &lt;img src="style/img/gmai.svg" width="30" height="30" style="float: none;" /&gt;
+ &lt;a href=mailto:"antony.barja8@gmail.com"&gt;antony.barja8@gmail.com&lt;/a&gt;
+ &lt;/div&gt;
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "dracula",
+"highlightLines": true,
+"ratio": "4:3",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
